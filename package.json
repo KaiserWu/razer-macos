@@ -19,6 +19,7 @@
     "iohook": "file:./iohook",
     "node-addon-api": "^1.0.0",
     "node-forge": "^0.10.0",
+    "node-hue-api": "^5.0.0-beta.8",
     "react": "^16.13.1",
     "react-color": "^2.18.0",
     "react-dom": "^16.13.1",

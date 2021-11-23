@@ -121,7 +121,9 @@ export class RazerDeviceKeyboard extends RazerDevice {
     this.setModeState('wheel', [featureConfiguration, speed]);
     this.stopAnimations();
     this.wheelAnimation = new RazerAnimationWheel(this, featureConfiguration, speed);
+        this.wheelAnimation.init(() => {
     this.wheelAnimation.start();
+        })
   }
 
   setCustomFrame(frame) {

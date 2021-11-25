@@ -19,7 +19,7 @@ export class RazerAnimationWheel extends RazerDeviceAnimation {
         this.nCols = featureConfiguration.cols;
         this.speed = speed; // seconds per cycle
         this.huewheel = new HueWheel([7, 6], featureConfiguration);
-        this.huerefreshRate = speed * 100;
+        this.huerefreshRate = 1000;
     }
 
     init(callback) {
@@ -65,14 +65,16 @@ export class RazerAnimationWheel extends RazerDeviceAnimation {
             this.matrix = matrix;
         }, refreshRate);
 
-        this.hueEffectInterval = setInterval(() => {
-            this.huewheel.start(this.matrix);
-        }, this.huerefreshRate);
+        this.huewheel.init( () => {
+            this.hueEffectInterval = setInterval(() => {
+                this.huewheel.start(this.matrix);
+            }, this.huerefreshRate);
+        })
     }
 
     stop() {
         clearTimeout(this.wheelEffectInterval);
-        clearTimeout(this.hueEffectInterval);
+        clearInterval(this.hueEffectInterval);
         this.huewheel.stop();
     }
 
